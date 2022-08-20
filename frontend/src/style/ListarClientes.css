@@ -1,0 +1,22 @@
+section#listaCliente{
+    display: flex;
+    flex-direction: column;
+}
+
+section#listaCliente h1{
+    margin: 30px 20px 10px 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+
+section#listaCliente div#contenedorTabla{
+    margin: 10px 30px 10px 30px;
+    padding: 20px;
+    background-color: #eef7e2;
+    border-radius: 10px;
+ 
+}
+
+button.btn{
+    margin-left: 10px;
+}
