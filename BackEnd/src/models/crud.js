@@ -24,8 +24,9 @@ function  InformacionGeneral(res, sql){
                 }) 
             } else {
                 //madamos los datos obtenidos
+                console.log(row[0]);
                 res.status(200).json({
-                    row
+                    rows: row[0],
                 }); 
             }
 
@@ -71,8 +72,92 @@ function  InformacionCliente(res, sql){
     });
 }
 
+function InsertarCliente(res, sql){
+    conexion.query(sql).
+    then(row => {
+
+        if (row.length == 0) {
+            res.header("Access-Control-Allow-Origin", "*");
+            res.status(404).json({
+                
+            });
+        } else {
+            res.header("Access-Control-Allow-Origin", "*");
+            //madamos los datos obtenidos
+            res.status(200).json({
+                //rows
+            });  
+            //madamos error si hay algun problema
+            res.status(401).json({
+                    msg : 'no existes'
+            }) 
+
+        }
+
+    }).catch(err => {
+        console.log(err);
+    });
+}
+
+function EditarCliente(res, sql){
+    conexion.query(sql).
+    then(row => {
+
+        if (row.length == 0) {
+            res.header("Access-Control-Allow-Origin", "*");
+            res.status(404).json({
+                
+            });
+        } else {
+            res.header("Access-Control-Allow-Origin", "*");
+            //madamos los datos obtenidos
+            res.status(200).json({
+                msg: 'Se editó satisfactoriamente'
+            });  
+            //madamos error si hay algun problema
+            res.status(401).json({
+                    msg : 'no existes'
+            }) 
+
+        }
+
+    }).catch(err => {
+        console.log(err);
+    });
+}
+
+function BorrarCliente(res, sql){
+    conexion.query(sql).
+    then(row => {
+
+        if (row.length == 0) {
+            res.header("Access-Control-Allow-Origin", "*");
+            res.status(404).json({
+                
+            });
+        } else {
+            res.header("Access-Control-Allow-Origin", "*");
+            //madamos los datos obtenidos
+            res.status(200).json({
+                msg: 'Se borró correctamente'
+            });  
+            //madamos error si hay algun problema
+            res.status(401).json({
+                    msg : 'no existes'
+            }) 
+
+        }
+
+    }).catch(err => {
+        console.log(err);
+    });
+}
+
 
 module.exports = {
     InformacionGeneral,
-    InformacionCliente
+    InformacionCliente,
+    InsertarCliente,
+    EditarCliente,
+    BorrarCliente
 }
