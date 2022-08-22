@@ -27,7 +27,7 @@ form#infoCliente div input#curpInput{
 form#infoCliente div#botones{
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 form#infoCliente div#botones button{
