@@ -7,14 +7,15 @@ router.get('/Listar_Clientes', (req, res) => {
     crud.InformacionGeneral(res,sql);
 });
 
-router.post('/Info_Cliente', (req, res, next) => {
+router.get('/Info_Cliente', (req, res, next) => {
     const { curp } = req.body;
     let sql = "CALL InformacionCliente('"+curp+"')";
-    crud.InformacionGeneral(res,sql);
-    next();
+    crud.InformacionCliente(res,sql);
+    // next();
 });
 
-router.post('/Agregar_Cliente', (req, res, next) => {
+router.post('/Agregar/Cliente', (req, res) => {
+    // console.log( req.body );
     const { nombre } = req.body;
     const { apellido_paterno } = req.body;
     const { apellido_materno } = req.body;
@@ -22,11 +23,14 @@ router.post('/Agregar_Cliente', (req, res, next) => {
     const { curp } = req.body;
 
     let sql = "INSERT INTO tbl_cmv_cliente (nombre, apellido_paterno, apellido_materno, rfc, curp, fecha_alta) VALUES ('"+nombre+"', '"+apellido_paterno+"', '"+apellido_materno+"', '"+rfc+"', '"+curp+"', now());";
-    crud.InsertarCliente(res, sql);
-    next();
+    // // crud.InsertarCliente(res, sql);
+    console.log(sql);
+    res.send("hola");
+    // next();
 });
 
 router.post('/Editar_Cliente', (req, res, next) => {
+    console.log(res.body);
     const { nombre } = req.body;
     const { apellido_paterno } = req.body;
     const { apellido_materno } = req.body;

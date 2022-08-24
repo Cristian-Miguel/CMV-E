@@ -24,7 +24,6 @@ function  InformacionGeneral(res, sql){
                 }) 
             } else {
                 //madamos los datos obtenidos
-                console.log(row[0]);
                 res.status(200).json({
                     rows: row[0],
                 }); 
@@ -37,10 +36,9 @@ function  InformacionGeneral(res, sql){
     });
 }
 
-function  InformacionCliente(res, sql){
+function InformacionCliente(res, sql){
     conexion.query(sql).
     then(row => {
-
         if (row.length == 0) {
             // res.header("Access-Control-Allow-Origin", "*");
             res.status(200).json({
