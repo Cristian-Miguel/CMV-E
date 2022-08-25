@@ -46,4 +46,4 @@ npm start
 
 ### En la parte de la base de datos
 En la carpeta  DataBase encontraremos el modelo de la base de datos y el ejecutable para generar la base de datos
-![Modelo de la base de datos](DataBase/Modelo.png)
+![Modelo de la base de datos](BackEnd/DataBase/Modelo.png)
