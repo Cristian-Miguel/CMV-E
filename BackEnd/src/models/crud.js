@@ -6,17 +6,11 @@ function  InformacionGeneral(res, sql){
     then(row => {
 
         if (row.length == 0) {
-            // res.header("Access-Control-Allow-Origin", "*");
             res.status(200).json({
-                
+                msg: 'no hay datos'
             });
         } 
         else {
-            // const accessToken = jwt.sign({ Nombre: row[0].Nombre }, server_config.get('app.JWT_SECRET'), {
-            //     expiresIn: "1d"
-            // });
-
-            // res.header("Access-Control-Allow-Origin", "*", accessToken);
             if (!row) {
                 //madamos error si hay algun problema
                 res.status(401).json({
@@ -36,39 +30,7 @@ function  InformacionGeneral(res, sql){
     });
 }
 
-function InformacionCliente(res, sql){
-    conexion.query(sql).
-    then(row => {
-        if (row.length == 0) {
-            // res.header("Access-Control-Allow-Origin", "*");
-            res.status(200).json({
-                
-            });
-        } 
-        else {
-            // const accessToken = jwt.sign({ Nombre: row[0].Nombre }, server_config.get('app.JWT_SECRET'), {
-            //     expiresIn: "1d"
-            // });
 
-            // res.header("Access-Control-Allow-Origin", "*", accessToken);
-            if (!row) {
-                //madamos error si hay algun problema
-                res.status(401).json({
-                msg : 'no existes'
-                }) 
-            } else {
-                //madamos los datos obtenidos
-                res.status(200).json({
-                    row
-                }); 
-            }
-
-        }
-
-    }).catch(err => {
-        console.log(err);
-    });
-}
 
 function InsertarCliente(res, sql){
     conexion.query(sql).
@@ -107,16 +69,11 @@ function EditarCliente(res, sql){
                 
             });
         } else {
-            res.header("Access-Control-Allow-Origin", "*");
+            // res.header("Access-Control-Allow-Origin", "*");
             //madamos los datos obtenidos
             res.status(200).json({
-                msg: 'Se editó satisfactoriamente'
+                msg: 'se actualizo correctamente'
             });  
-            //madamos error si hay algun problema
-            res.status(401).json({
-                    msg : 'no existes'
-            }) 
-
         }
 
     }).catch(err => {
@@ -134,7 +91,6 @@ function BorrarCliente(res, sql){
                 
             });
         } else {
-            res.header("Access-Control-Allow-Origin", "*");
             //madamos los datos obtenidos
             res.status(200).json({
                 msg: 'Se borró correctamente'
@@ -154,7 +110,6 @@ function BorrarCliente(res, sql){
 
 module.exports = {
     InformacionGeneral,
-    InformacionCliente,
     InsertarCliente,
     EditarCliente,
     BorrarCliente
